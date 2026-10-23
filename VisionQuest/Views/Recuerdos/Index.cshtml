@@ -11,7 +11,6 @@
 </p>
 <table class="table">
     <tr>
-        <th>Sintezoide</th>
         <th>
             @Html.DisplayNameFor(model => model.TituloRecuerdo)
         </th>
@@ -21,14 +20,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Claridad)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SintezoideId)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sintezoide.Nombre)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TituloRecuerdo)
         </td>
@@ -37,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Claridad)
+        </td>
+        <td>
+            @(item.Sintezoide == null ? "" : item.Sintezoide.Nombre)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

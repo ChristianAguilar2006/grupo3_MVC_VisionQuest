@@ -1,28 +1,39 @@
 ﻿@{
     ViewBag.Title = "Inicio";
 }
-<h2>VisionQuest</h2>
+
+<h2>Inicio</h2>
 
 <h3>Sintezoides</h3>
-<p>@Html.ActionLink("Crear sintezoide", "Create", "Sintezoides")</p>
-<table class="table table-striped">
+<p>
+    @Html.ActionLink("Crear nuevo", "Create", "Sintezoides")
+</p>
+<table class="table">
     <tr>
         <th>Nombre</th>
         <th>Modelo</th>
         <th>Nivel de IA</th>
         <th>Fuente de energía</th>
-        <th>Acciones</th>
+        <th></th>
     </tr>
     @foreach (VisionQuest.Models.Sintezoide item in ViewBag.Sintezoides)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-            <td>@Html.DisplayFor(modelItem => item.Modelo)</td>
-            <td>@Html.DisplayFor(modelItem => item.NivelIA)</td>
-            <td>@Html.DisplayFor(modelItem => item.FuenteEnergia)</td>
             <td>
-                @Html.ActionLink("Detalles", "Details", "Sintezoides", new { id = item.Id }, null) |
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NivelIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuenteEnergia)
+            </td>
+            <td>
                 @Html.ActionLink("Editar", "Edit", "Sintezoides", new { id = item.Id }, null) |
+                @Html.ActionLink("Detalles", "Details", "Sintezoides", new { id = item.Id }, null) |
                 @Html.ActionLink("Eliminar", "Delete", "Sintezoides", new { id = item.Id }, null)
             </td>
         </tr>
@@ -30,25 +41,35 @@
 </table>
 
 <h3>Recuerdos</h3>
-<p>@Html.ActionLink("Crear recuerdo", "Create", "Recuerdos")</p>
-<table class="table table-striped">
+<p>
+    @Html.ActionLink("Crear nuevo", "Create", "Recuerdos")
+</p>
+<table class="table">
     <tr>
         <th>Título</th>
         <th>Tipo</th>
         <th>Claridad</th>
-        <th>Sintezoide asociado</th>
-        <th>Acciones</th>
+        <th>Sintezoide</th>
+        <th></th>
     </tr>
     @foreach (VisionQuest.Models.Recuerdo item in ViewBag.Recuerdos)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.TituloRecuerdo)</td>
-            <td>@Html.DisplayFor(modelItem => item.TipoRecuerdo)</td>
-            <td>@Html.DisplayFor(modelItem => item.Claridad)</td>
-            <td>@Html.DisplayFor(modelItem => item.Sintezoide.Nombre)</td>
             <td>
-                @Html.ActionLink("Detalles", "Details", "Recuerdos", new { id = item.Id }, null) |
+                @Html.DisplayFor(modelItem => item.TituloRecuerdo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoRecuerdo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Claridad)
+            </td>
+            <td>
+                @(item.Sintezoide == null ? "" : item.Sintezoide.Nombre)
+            </td>
+            <td>
                 @Html.ActionLink("Editar", "Edit", "Recuerdos", new { id = item.Id }, null) |
+                @Html.ActionLink("Detalles", "Details", "Recuerdos", new { id = item.Id }, null) |
                 @Html.ActionLink("Eliminar", "Delete", "Recuerdos", new { id = item.Id }, null)
             </td>
         </tr>
